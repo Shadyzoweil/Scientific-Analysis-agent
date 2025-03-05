@@ -2,6 +2,7 @@ import { useState } from "react";
 import { analyzePaper } from "../services/api";
 import ReactMarkdown from "react-markdown";
 import { BlueCheck, LoadingIcon } from "../assets/Icons";
+
 const Analyzer = () => {
   const [text, setText] = useState("");
   const [result, setResult] = useState("");
@@ -10,7 +11,7 @@ const Analyzer = () => {
   const handleAnalyze = async () => {
     if (!text.trim()) return;
 
-    setLoading(true); // Start loading
+    setLoading(true);
 
     try {
       const response = await analyzePaper(text);
@@ -21,8 +22,20 @@ const Analyzer = () => {
       console.error("API Error:", error.response?.data || error.message);
       setResult("An error occurred while analyzing.");
     } finally {
-      setLoading(false); // Stop loading
+      setLoading(false);
     }
+  };
+
+  const handleDownload = () => {
+    const blob = new Blob([result], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "analysis_result.txt";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
   };
 
   return (
@@ -62,6 +75,13 @@ const Analyzer = () => {
           <div className="prose max-w-none text-gray-700 leading-relaxed">
             <ReactMarkdown>{result}</ReactMarkdown>
           </div>
+
+          <button
+            className="mt-4 bg-green-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-700 focus:ring-2 focus:ring-green-500 transition-all"
+            onClick={handleDownload}
+          >
+            Download Result
+          </button>
         </div>
       )}
     </div>
