@@ -51,6 +51,7 @@ Error Responses:
 4. Click the 'Analyze' button to trigger AI analysis.
 5. View the result and download it if needed.
 
+*Future Improvements: Security annd authentication.(Unfortunately I didnt have enough time)
 
 
 
