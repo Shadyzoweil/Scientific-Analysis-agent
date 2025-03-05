@@ -50,6 +50,8 @@ Error Responses:
 3. Paste a research paper or text into the input box.
 4. Click the 'Analyze' button to trigger AI analysis.
 5. View the result and download it if needed.
+*example query: 1- Download and summarize the findings of this paper: https://pmc.ncbi.nlm.nih.gov/articles/PMC11379842/pdf/11671_2024_Article_4070.pdf
+2-Download and summarize the findings of this paper: https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf
 
 *Future Improvements: Security and authentication and  more scalable and cleaner React Code.(Unfortunately I didnt have enough time)
 
